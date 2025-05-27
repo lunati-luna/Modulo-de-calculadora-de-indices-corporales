@@ -20,6 +20,17 @@ def pedir_int(mensaje):
         except ValueError:
             print("Por favor, ingrese un número entero válido.")
 
+def continuar():
+    while True:
+        respuesta = input("¿Desea realizar otro cálculo? (Si/No): ").strip().lower()
+        if respuesta == "si":
+            return True
+        elif respuesta == "no":
+            print("Módulo cerrado")
+            return False
+        else:
+            print("Por favor, responda 'Si' o 'No'.")
+
 
 def mostrar_menu():
     print("\nCalculadora de Índices Corporales")
@@ -42,12 +53,8 @@ def main():
             print(f"Su IMC es: {imc:.2f}")
             clasificacion = clasificar_IMC(imc)
             print(f"Clasificación: {clasificacion}")
-            pregunta = input("Continuar? (Si/No): ").strip().lower()
-            if pregunta == 'si':
-                continue
-            else:
-                print("Módulo cerrado")
-            break
+            if not continuar():
+                break
         
         elif opcion == "2":
             peso = pedir_float("Ingrese su peso en kg: ")
@@ -56,13 +63,9 @@ def main():
             valor_genero = pedir_float("Ingrese 0 si es mujer, 10.8 si es hombre: ")
             grasa = calcular_porcentaje_grasa(peso, altura, edad, valor_genero)
             print(f"Su porcentaje de grasa corporal estimado es: {grasa:.2f}%")
-            pregunta = input("Continuar? (Si/No): ").strip().lower()
-            if pregunta == 'si':
-                continue
-            else:
-                print("Módulo cerrado")
+            if not continuar():
+                break
             
-            break
 
         elif opcion == "3":
             peso = pedir_float("Ingrese su peso en kg: ")
@@ -71,12 +74,8 @@ def main():
             valor_genero = pedir_int("Ingrese 5 si es hombre, -161 si es mujer: ")
             tmb = calcular_calorias_en_reposo(peso, altura, edad, valor_genero)
             print(f"Su Tasa Metabólica Basal (TMB) es: {tmb:.2f} calorías/día")
-            pregunta = input("Continuar? (Si/No): ").strip().lower()
-            if pregunta == 'si':
-                continue
-            else:
-                print("Módulo cerrado")
-            break
+            if not continuar():
+                break
 
         elif opcion == "4":
             peso = pedir_float("Ingrese su peso en kg: ")
@@ -86,26 +85,18 @@ def main():
             valor_actividad = pedir_float("Ingrese el factor de actividad (ej: 1.2 sedentario, 1.55 moderado, etc.): ")
             calorias_actividad = calcular_calorias_en_actividad(peso, altura, edad, valor_genero, valor_actividad)
             print(f"Su requerimiento calórico diario según actividad es: {calorias_actividad:.2f} calorías/día")
-            pregunta = input("Continuar? (Si/No): ").strip().lower()
-            if pregunta == 'si':
-                continue
-            else:
-                print("Módulo cerrado")
-            break
+            if not continuar():
+                break
 
         elif opcion == "5":
             peso = pedir_float("Ingrese su peso en kg: ")
             altura = pedir_float("Ingrese su altura en cm: ")
             edad = pedir_int("Ingrese su edad: ")
             valor_genero = pedir_int("Ingrese 5 si es hombre, -161 si es mujer: ")
-            calorias_objetivo = consumo_calorias_recomendado_para_adelgazar(peso, altura, edad, valor_genero)
-            print(f"Consumo calórico recomendado para adelgazar: {calorias_objetivo:.2f} calorías/día")
-            pregunta = input("Continuar? (Si/No): ").strip().lower()
-            if pregunta == 'si':
-                continue
-            else:
-                print("Módulo cerrado")
-            break
+            mensaje = consumo_calorias_recomendado_para_adelgazar(peso, altura, edad, valor_genero)
+            print(mensaje)
+            if not continuar():
+                break
 
         elif opcion == "0":
             print("Módulo cerrado")
