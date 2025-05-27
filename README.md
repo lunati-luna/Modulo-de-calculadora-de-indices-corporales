@@ -1,0 +1,1 @@
+Este modulo, permite calcular distintos índices corporales útiles para evaluar el estado físico y metabólico de una persona. Incluye funciones para calcular el IMC, el porcentaje de grasa corporal, la tasa metabólica basal y las calorías necesarias según el nivel de actividad o para adelgazar.
